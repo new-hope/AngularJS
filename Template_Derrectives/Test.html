@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="TestApp">
+<head>
+    <title>Сделать приложение, к которм пользователю предлагается
+      пройти тест из 5 вопросов, в каждом вопросе 4 варианта ответа.
+      Вопросы должны выбираться с помощью радио-кнопки и когда выбран вопрос
+      на странице должны появляться варианты ответа только для этого
+      вопроса. В конце отобразить результат теста. Использовать директиву ng-switch
+    </title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="TestApp.js"></script>
+
+</head>
+<body ng-controller="TestCtrl">
+  <div class="">
+    Test
+  </div>
+  <div class="table" ng-repeat="question in questions">
+    <input type="radio" ng-model="mode.value" name="questions" value="{{question.value}}"> {{question.display}}
+  </div>
+
+  <div class="" ng-switch on="mode.value">
+
+    <div class="" ng-switch-when="question_1">
+      <p>Choice one answer</p>
+      <div class="" ng-repeat="answer in answers[1].display">
+        <input type="radio" name="question_1" ng-model="modeAnsw.answ" value="{{answer.answ}}"> {{answer.answ}}
+      </div>
+
+      <div class="btn">
+        <button type="submit" ng-click="addAnswer()" ng-show="modeAnsw.answ" name="button">Continue</button>
+      </div>
+    </div>
+
+    <div class="" ng-switch-when="question_2">
+      <p>Choice one answer</p>
+      <div class="" ng-repeat="answer in answers[2].display">
+        <input type="radio" name="question_2" ng-model="modeAnsw.answ" value="{{answer.answ}}"> {{answer.answ}}
+      </div>
+
+      <div class="btn">
+        <button type="submit" ng-click="addAnswer()" ng-show="modeAnsw.answ" name="button">Continue</button>
+      </div>
+    </div>
+
+    <div class="" ng-switch-when="question_3">
+      <p>Choice one answer</p>
+      <div class="" ng-repeat="answer in answers[3].display">
+        <input type="radio" name="question_3" ng-model="modeAnsw.answ" value="{{answer.answ}}"> {{answer.answ}}
+      </div>
+
+      <div class="btn">
+        <button type="submit" ng-click="addAnswer()" ng-show="modeAnsw.answ" name="button">Continue</button>
+      </div>
+    </div>
+
+    <div class="" ng-switch-when="question_4">
+      <p>Choice one answer</p>
+      <div class="" ng-repeat="answer in answers[4].display">
+        <input type="radio" name="question_4" ng-model="modeAnsw.answ" value="{{answer.answ}}"> {{answer.answ}}
+      </div>
+
+      <div class="btn">
+        <button type="submit" ng-click="addAnswer()" ng-show="modeAnsw.answ" name="button">Continue</button>
+      </div>
+    </div>
+
+    <div class="" ng-switch-when="question_5">
+      <p>Choice one answer</p>
+      <div class="" ng-repeat="answer in answers[5].display">
+        <input type="radio" name="question_5" ng-model="modeAnsw.answ" value="{{answer.answ}}"> {{answer.answ}}
+      </div>
+
+      <div class="btn">
+        <button type="submit" ng-click="addAnswer()" ng-show="modeAnsw.answ" name="button">Continue</button>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div ng-show="showRes" class="">
+    <p>Your result: {{res}}</p>
+  </div>
+
+</body>
+</html>

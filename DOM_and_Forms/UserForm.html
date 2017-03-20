@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="UserFormApp">
+<head>
+
+    <title>Создайте форму для регистрации нового пользователя. Форма должна содержать поля:
+            ФИО, e-mail, телефон, пароль, подтверждение пароля. Реализовать real-time
+            валидацию пользовательского ввода.</title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="UserFormController.js"></script>
+
+    <style>
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+<body>
+
+  <div class="" ng-controller="UserFormAppCtrl">
+    <form name="userForm" novalidate>
+      <div class="well">
+
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text" name="userFirstName" class="form-control" placeholder="First Name" required ng-model="newUser.firstName" >
+        </div>
+
+
+
+        <div class="form-group">
+          <label>Last Name:</label>
+          <input type="text" name="userLastName" class="form-control" placeholder="Last Name" required ng-model="newUser.lastName" >
+        </div>
+
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" name="userEmail" class="form-control" placeholder="Email" required ng-model="newUser.email">
+        </div>
+
+        <div class="error" ng-show="userForm.userEmail.$invalid && userForm.userEmail.$dirty">
+            {{getError(userForm.userEmail.$error)}}
+        </div>
+
+        <div class="form-group">
+          <label>Phone:</label>
+          <input type="tel" name="userPhone" class="form-control" placeholder="Phone" required ng-model="newUser.phone">
+        </div>
+
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="userPassword" class="form-control" ng-minlength="5" ng-maxlength="25" placeholder="Password" required ng-model="newUser.password">
+        </div>
+
+        <div class="error" ng-show="userForm.userPassword.$dirty">
+            {{getError(userForm.userPassword.$error)}}
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password:</label>
+          <input type="password" name="userConPassword" class="form-control" required ng-model="newUser.con_password">
+        </div>
+
+        <div class="error" ng-show="userForm.userPassword.$valid">
+            {{passError()}}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid" ng-click="showAlert(newUser, userForm)">
+            OK
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

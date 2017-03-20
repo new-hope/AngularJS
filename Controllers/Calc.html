@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="CalcApp">
+<head>
+
+    <title>
+      Используя технику наследования контроллеров создать калькулятор. Базовый контроллер
+      содержит один метод. Создать контроллеры наследники, которые бы расширяли поведение
+      базового контроллера. При использовании последнего контроллера из цепочки наследования
+      должны быть доступны все 4 операции (сложение, вычитание, умножение и деление).
+
+    </title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="CalcApp.js"></script>
+
+
+
+</head>
+<body>
+
+  <div class="" ng-controller="baseAddCtrl">
+    <div class="">
+      <input type="number" ng-model="num_1">
+    </div>
+
+    <div class="">
+      <input type="number" ng-model="num_2">
+    </div>
+
+    <button type="button" name="button" ng-click="add()">+</button>
+
+    <div class="" ng-controller="derivedSubCtrl">
+      <button type="button" name="button" ng-click="sub()">-</button>
+
+      <div class="" ng-controller="derivedMulCtrl">
+        <button type="button" name="button" ng-click="mul()">*</button>
+
+        <div class="" ng-controller="derivedDivCtrl">
+          <button type="button" name="button" ng-click="div()">/</button>
+          <p>{{result}}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

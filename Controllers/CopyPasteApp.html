@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="CopyPasteApp">
+<head>
+
+    <title>
+      Создать приложение, в котором существуют два поля ввода и две кнопки (копировать и вставить).
+      Когда пользователь ввел данные в первое поле он может нажать на кноку копировать и
+      данные скопируются, далее он млжет нажать на кнопку всатавить и данные всатавятся во
+      второе поле ввода. Реализуйте приложение используя два независимых контроллера, один
+      обрабатывает нажатие на кнопку копировать, втрой нажатие на кнопку вставить.
+    </title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="CopyPasteApp.js"></script>
+
+
+
+</head>
+<body>
+
+  <div class="" ng-controller="CopyCtrl">
+    <div class="">
+      <input type="text" name="copy" ng-model="copy">
+    </div>
+
+    <div class="">
+      <button type="submit" name="button" ng-click="getCopy()">Copy</button>
+    </div>
+  </div>
+
+  <div class="" ng-controller="PasteCtrl">
+    <div class="">
+      <input type="text" name="paste" ng-model="paste">
+    </div>
+
+    <div class="">
+      <button type="submit" name="button" ng-click="getPaste()">Paste</button>
+    </div>
+  </div>
+
+</body>
+</html>
