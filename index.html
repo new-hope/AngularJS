@@ -1,0 +1,47 @@
+<html ng-app="indexApp">
+<head>
+    <title></title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="index.js">
+
+    </script>
+</head>
+<body ng-controller="indexCtrl">
+
+  <div class="container">
+
+    <div class="page-header text-center text-uppercase text-primary">
+      <h1>Links on the tasks</h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Chapter</th>
+          <th>Selection menu</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="elem in tasksFolder">
+          <th>{{$index + 1}}</th>
+          <th>{{elem.name}}</th>
+          <th><input type="checkbox" ng-model="selected[$index]"></th>
+        </tr>
+      </tbody>
+    </table>
+
+    <div ng-repeat="item in tasksFolder" ng-if="selected[$index]" class="lead">
+      <div ng-repeat="url in item.tasks_url">
+        <p><a href="{{url}}">{{item.name}} Task {{$index + 1}}</a></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
