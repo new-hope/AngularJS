@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Создать пользовательскую директиву, которой можно передать массив объектов,
+            а результатом ее работы будет сгенерированная таблица. Столбцы таблтцы должны
+            соответствовать сойствам объекта.</title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+      var app = angular.module("myApp", []);
+      app.controller("myCtrl", function($scope) {
+        $scope.items = [
+            {property_1: "value_11", property_2: "value_12", property_3: "value_13"},
+            {property_1: "value_21", property_2: "value_22", property_3: "value_23"},
+            {property_1: "value_31", property_2: "value_32", property_3: "value_33"},
+            {property_1: "value_41", property_2: "value_42", property_3: "value_43"},
+            {property_1: "value_51", property_2: "value_52", property_3: "value_53"},
+        ];
+      })
+
+      app.directive("tableDirective", function() {
+        return {
+          restrict: "A",
+          link: function (scope, element, attrs) {
+            var data = scope[attrs["tableDirective"]];
+            if (angular.isArray(data)) {
+              var table = angular.element("<table>");
+              table.addClass("table");
+              element.append(table);
+              var thead = angular.element("<thead>");
+              table.append(thead);
+              var tr = angular.element("<tr>");
+              thead.append(tr);
+              tr.append(angular.element("<th>").text("property_1"));
+              tr.append(angular.element("<th>").text("property_2"));
+              tr.append(angular.element("<th>").text("property_3"));
+              var tbody = angular.element("<tbody>");
+              table.append(tbody);
+              for (var i = 0; i < data.length; i++){
+                var tr_body = angular.element("<tr>");
+                tr_body.append(angular.element("<td>").text(data[i].property_1));
+                tr_body.append(angular.element("<td>").text(data[i].property_2));
+                tr_body.append(angular.element("<td>").text(data[i].property_3));
+                tbody.append(tr_body);
+              }
+            }
+          }
+        }
+      })
+    </script>
+</head>
+<body ng-controller="myCtrl">
+  <div table-directive="items">
+
+  </div>
+</body>
+</html>
