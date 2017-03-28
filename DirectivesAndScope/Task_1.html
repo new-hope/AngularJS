@@ -34,16 +34,18 @@
               table.append(thead);
               var tr = angular.element("<tr>");
               thead.append(tr);
-              tr.append(angular.element("<th>").text("property_1"));
-              tr.append(angular.element("<th>").text("property_2"));
-              tr.append(angular.element("<th>").text("property_3"));
+              for (var key in data[0]) {
+                tr.append(angular.element("<th>").text(key));
+              }
+
               var tbody = angular.element("<tbody>");
               table.append(tbody);
               for (var i = 0; i < data.length; i++){
                 var tr_body = angular.element("<tr>");
-                tr_body.append(angular.element("<td>").text(data[i].property_1));
-                tr_body.append(angular.element("<td>").text(data[i].property_2));
-                tr_body.append(angular.element("<td>").text(data[i].property_3));
+                for (var newkey in data[i]) {
+                  tr_body.append(angular.element("<td>").text(data[i][newkey]));
+                }
+
                 tbody.append(tr_body);
               }
             }
