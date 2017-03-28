@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Создать директиву, которая на основе массива будет создавать определенное количество
+            параграфов: генерация должна происходить с помощью шаблона, директиву можно применить
+            только как атрибут,  сгенерированный контент должен полностью заменить собой
+            элемент, к которому применяется директива, у нее должен быть независимый scope.</title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+      var app = angular.module("myApp", []);
+      app.controller("myCtrl", function($scope) {
+        $scope.items = ["paragraph1", "paragraph2", "paragraph3", "paragraph4", "paragraph5"];
+      })
+
+      app.directive("paragraphList", function() {
+        return {
+          restrict: "A",
+          template: '<p ng-repeat="item in newItems">{{item}}</p>',
+          replace: true,
+          scope: {
+            newItems: "="
+          }
+
+        }
+      })
+    </script>
+</head>
+<body ng-controller="myCtrl">
+  <div paragraph-list new-items="items">
+
+  </div>
+</body>
+</html>

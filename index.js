@@ -20,6 +20,11 @@ var app = angular.module("indexApp", []);
           "Filters/Filter_1.html",
           "Filters/MyFilter.html",
           "Filters/Daybook.html"
+      ]},
+      {name: "DirectivesAndScope", tasks_url: [
+          "DirectivesAndScope/Task_1.html",
+          "DirectivesAndScope/Task_2.html"
+          
       ]}
     ];
 
