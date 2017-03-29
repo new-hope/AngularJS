@@ -23,8 +23,9 @@ var app = angular.module("indexApp", []);
       ]},
       {name: "DirectivesAndScope", tasks_url: [
           "DirectivesAndScope/Task_1.html",
-          "DirectivesAndScope/Task_2.html"
-          
+          "DirectivesAndScope/Task_2.html",
+          "DirectivesAndScope/Task_3.html",
+
       ]}
     ];
 
