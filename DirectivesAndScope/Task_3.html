@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Создать директиву для генерации меню.  В качестве источника данных директива
+            должна использовать массив объектов, одно из свойств объекта должно использоваться
+            как текст элемента меню, второе свойство используется для определения адреса
+            перехода при клике по меню. Имена свойств должны задаваться через дополнительные
+            атрибуты директивы.</title>
+
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+      var app = angular.module("myApp", []);
+      app.controller("myCtrl", function($scope) {
+        $scope.menu = [
+            {name: "Task_1", url: "../Introduction_in_AngularJS/Task_1.html"},
+            {name: "Task_2", url: "../Introduction_in_AngularJS/Task_2.html"},
+            {name: "Task_3", url: "../Introduction_in_AngularJS/Test.html"},
+            {name: "Task_4", url: "../Introduction_in_AngularJS/CalculateApp.html"}
+
+        ];
+      })
+
+      app.directive("menuDirective", function() {
+        return {
+          restrict: "A",
+          link: function(scope, element, attrs) {
+            var data = scope[attrs["menuDirective"]];
+            var propName = attrs["menuName"];
+            var propUrl = attrs["menuUrl"];
+
+            if(angular.isArray(data)) {
+              var ul = angular.element("<ul>");
+              ul.addClass("nav");
+              ul.addClass("nav-pills");
+              element.append(ul);
+              for (var i = 0; i < data.length; i++) {
+                var li = angular.element("<li>");
+                ul.append(li);
+                var a = angular.element("<a>");
+                a.attr("href", data[i][propUrl]);
+                li.append(a.text(data[i][propName]));
+              }
+            }
+          }
+        }
+      })
+    </script>
+</head>
+<body ng-controller="myCtrl">
+  <div menu-directive="menu" menu-name="name" menu-url="url">
+
+  </div>
+</body>
+</html>
