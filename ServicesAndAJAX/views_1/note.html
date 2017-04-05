@@ -1,0 +1,30 @@
+<div class="panel-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Notename</th>
+                <th class="text-right">Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.note}}</td>
+                <td class="text-right">{{item.date | date:'yyyy-MM-dd'}}</td>
+
+                <td class="text-center">
+                    <button class="btn btn-xs btn-primary" ng-click="deleteNote(item)">
+                        Delete
+                    </button>
+                    <button class="btn btn-xs btn-primary" ng-click="editCreate(item)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+        <button class="btn btn-primary" ng-click="editCreate()">New</button>
+    </div>
+</div>

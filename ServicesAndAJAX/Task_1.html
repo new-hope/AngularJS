@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="notebookApp">
+<head>
+    <title>Создать приложение-блокнот. Приложение должно создавать записи,
+        редактировать, удалять и сохранять их на сервере. Использовать сервис $http.</title>
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="Task_1.js"></script>
+</head>
+
+<body ng-controller="notebookCtrl">
+    <div class="panel panel-primary">
+        <h3 class="panel-heading">NOTEBOOK</h3>
+        <ng-include src="'views_1/note.html'" ng-show="currentView == 'note'"></ng-include>
+        <ng-include src="'views_1/edit.html'" ng-show="currentView == 'edit'"></ng-include>
+    </div>
+</body>
+</html>
