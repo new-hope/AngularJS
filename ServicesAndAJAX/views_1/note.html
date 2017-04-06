@@ -10,7 +10,7 @@
         <tbody>
             <tr ng-repeat="item in items">
                 <td>{{item.note}}</td>
-                <td class="text-right">{{item.date | date:'yyyy-MM-dd'}}</td>
+                <td class="text-right">{{item.date | date: 'yyyy-MM-dd'}}</td>
 
                 <td class="text-center">
                     <button class="btn btn-xs btn-primary" ng-click="deleteNote(item)">

@@ -1,21 +1,21 @@
 angular.module("notebookApp", [])
-.constant("url", "http://localhost:2403/items/")
-.controller("notebookCtrl", function($scope, $http, url) {
+.constant("Url", "http://localhost:2403/items/")
+.controller("notebookCtrl", function($scope, $http, Url) {
 
   $scope.currentView = "note";
 
   // функция для получения данных с помощью GET-запроса по адресу url
   $scope.refresh = function() {
-      $http.get(url).success(function(data){
+      $http.get(Url).success(function(data){
           $scope.items = data;
     });
   }
 
   // функция для создания новой записи и отправка POST-запроса на сервер
   $scope.createNote = function (item) {
-      $http.({
-          url: url + item.id,
-          method: 'POST',
+      $http({
+          url: Url,
+          method: "POST",
           data: item
       }).success(function (item) {
           $scope.items.push(item);
@@ -27,7 +27,7 @@ angular.module("notebookApp", [])
   $scope.deleteNote = function (item) {
       $http({
           method: "DELETE",
-          url: url + item.id
+          url: Url + item.id
       }).success(function () {
           $scope.items.splice($scope.items.indexOf(item), 1);
       });
@@ -36,7 +36,7 @@ angular.module("notebookApp", [])
   // функция для обновления записи на сервере
   $scope.updateNote = function (item) {
       $http({
-          url: url + item.id,
+          url: Url + item.id,
           method: "PUT",
           data: item
       }).success(function (modItem) {
